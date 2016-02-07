@@ -3,6 +3,7 @@ package com.example.azapriy.list3;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -81,7 +85,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_linear_layout_dynamic) {
-            // Handle the camera action
+            FrameLayout main_container = (FrameLayout) findViewById(R.id.main_container);
+            main_container.removeAllViews();
+            LayoutInflater inflater = LayoutInflater.from(this);
+            LinearLayout list = (LinearLayout) inflater.inflate(R.layout.simple_linear_layout, null);
+            for(int i=0; i < 5; i++) {
+                TextView list_item = (TextView) inflater.inflate(R.layout.list_item, null);
+                list_item.setText("New Item " + i);
+                list.addView(list_item);
+            }
+            main_container.addView(list);
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
