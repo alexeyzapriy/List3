@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_linear_layout_dynamic) {
-            FrameLayout main_container = (FrameLayout) findViewById(R.id.main_container);
+            ScrollView main_container = (ScrollView) findViewById(R.id.main_container);
             main_container.removeAllViews();
             LayoutInflater inflater = LayoutInflater.from(this);
             LinearLayout list = (LinearLayout) inflater.inflate(R.layout.simple_linear_layout, null);
