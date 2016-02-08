@@ -86,17 +86,18 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_linear_layout_dynamic) {
-            ScrollView main_container = (ScrollView) findViewById(R.id.main_container);
+            FrameLayout main_container = (FrameLayout) findViewById(R.id.main_container);
             main_container.removeAllViews();
             LayoutInflater inflater = LayoutInflater.from(this);
-            LinearLayout list = (LinearLayout) inflater.inflate(R.layout.simple_linear_layout, null);
+            ScrollView scroll = (ScrollView) inflater.inflate(R.layout.simple_linear_layout, null);
+            LinearLayout list = (LinearLayout) (scroll.findViewById(R.id.simple_linear_layout));
             for(int i=0; i < 5; i++) {
                 TextView list_item = (TextView) inflater.inflate(R.layout.list_item, null);
                 list_item.setText("New Item " + i);
                 list.addView(list_item);
             }
-            main_container.addView(list);
-        } else if (id == R.id.nav_gallery) {
+            main_container.addView(scroll);
+        } else if (id == R.id.nav_list_view) {
 
         } else if (id == R.id.nav_slideshow) {
 
