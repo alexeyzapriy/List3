@@ -119,8 +119,13 @@ public class MainActivity extends AppCompatActivity
             CustomRecyclerAdapter adapter = new CustomRecyclerAdapter(dataSet);
             list.setAdapter(adapter);
             main_container.addView(list);
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.nav_cards) {
+            RecyclerView list = (RecyclerView) inflater.inflate(R.layout.recycler_view, null);
+            LinearLayoutManager manager = new LinearLayoutManager(this);
+            list.setLayoutManager(manager);
+            CardsRecyclerAdapter adapter = new CardsRecyclerAdapter(this, dataSet);
+            list.setAdapter(adapter);
+            main_container.addView(list);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
