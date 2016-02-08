@@ -3,6 +3,8 @@ package com.example.azapriy.list3;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -24,6 +26,10 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private String[] dataSet = { "Qaawws", "Bkxcsf", "sdfksskvuksjv fvjufvidfub", "sdfsdfs", "dfsdfsdf", "sfhsbfbsv", "sdfhsfhsmhfdhm",
+            "111111111", "2222222222", "3333333333", "444444444", "55555555555", "6666666666", "77777777777777",
+            "888888", "999999999", "1010101010110", "111111111111", "12121212121212", "13131313131313131313",
+            "14141414141414", "151515151515", "16161616161616", "17171771717171", "1818181818818181" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,14 +109,16 @@ public class MainActivity extends AppCompatActivity
             main_container.addView(scroll);
         } else if (id == R.id.nav_list_view) {
             ListView list = (ListView) inflater.inflate(R.layout.list_view, null);
-            list.setAdapter(new MyListViewAdapter(this, new ArrayList<String>(Arrays.asList(
-                    "Qaawws", "Bkxcsf", "sdfksskvuksjv fvjufvidfub", "sdfsdfs", "dfsdfsdf", "sfhsbfbsv", "sdfhsfhsmhfdhm",
-                    "111111111", "2222222222", "3333333333", "444444444", "55555555555", "6666666666", "77777777777777",
-                    "888888", "999999999", "1010101010110", "111111111111", "12121212121212", "13131313131313131313",
-                    "14141414141414", "151515151515", "16161616161616", "17171771717171", "1818181818818181"))));
+            list.setAdapter(new MyListViewAdapter(this, new ArrayList<>(Arrays.asList(dataSet))));
             main_container.addView(list);
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.nav_recycler_view) {
+            RecyclerView list = (RecyclerView) inflater.inflate(R.layout.recycler_view, null);
+            list.setHasFixedSize(true);
+            LinearLayoutManager manager = new LinearLayoutManager(this);
+            list.setLayoutManager(manager);
+            CustomRecyclerAdapter adapter = new CustomRecyclerAdapter(dataSet);
+            list.setAdapter(adapter);
+            main_container.addView(list);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
