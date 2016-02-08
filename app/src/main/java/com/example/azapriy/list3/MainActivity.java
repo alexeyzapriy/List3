@@ -88,23 +88,20 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FrameLayout main_container = (FrameLayout) findViewById(R.id.main_container);
+        main_container.removeAllViews();
+        LayoutInflater inflater = LayoutInflater.from(this);
 
         if (id == R.id.nav_linear_layout_dynamic) {
-            FrameLayout main_container = (FrameLayout) findViewById(R.id.main_container);
-            main_container.removeAllViews();
-            LayoutInflater inflater = LayoutInflater.from(this);
             ScrollView scroll = (ScrollView) inflater.inflate(R.layout.simple_linear_layout, null);
             LinearLayout list = (LinearLayout) (scroll.findViewById(R.id.simple_linear_layout));
-            for(int i=0; i < 5; i++) {
+            for(int i=0; i < 40; i++) {
                 TextView list_item = (TextView) inflater.inflate(R.layout.list_item, null);
                 list_item.setText("New Item " + i);
                 list.addView(list_item);
             }
             main_container.addView(scroll);
         } else if (id == R.id.nav_list_view) {
-            FrameLayout main_container = (FrameLayout) findViewById(R.id.main_container);
-            main_container.removeAllViews();
-            LayoutInflater inflater = LayoutInflater.from(this);
             ListView list = (ListView) inflater.inflate(R.layout.list_view, null);
             list.setAdapter(new MyListViewAdapter(this, new ArrayList<String>(Arrays.asList(
                     "Qaawws", "Bkxcsf", "sdfksskvuksjv fvjufvidfub", "sdfsdfs", "dfsdfsdf", "sfhsbfbsv", "sdfhsfhsmhfdhm",
