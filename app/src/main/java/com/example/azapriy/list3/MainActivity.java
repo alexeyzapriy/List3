@@ -15,8 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -98,7 +102,16 @@ public class MainActivity extends AppCompatActivity
             }
             main_container.addView(scroll);
         } else if (id == R.id.nav_list_view) {
-
+            FrameLayout main_container = (FrameLayout) findViewById(R.id.main_container);
+            main_container.removeAllViews();
+            LayoutInflater inflater = LayoutInflater.from(this);
+            ListView list = (ListView) inflater.inflate(R.layout.list_view, null);
+            list.setAdapter(new MyListViewAdapter(this, new ArrayList<String>(Arrays.asList(
+                    "Qaawws", "Bkxcsf", "sdfksskvuksjv fvjufvidfub", "sdfsdfs", "dfsdfsdf", "sfhsbfbsv", "sdfhsfhsmhfdhm",
+                    "111111111", "2222222222", "3333333333", "444444444", "55555555555", "6666666666", "77777777777777",
+                    "888888", "999999999", "1010101010110", "111111111111", "12121212121212", "13131313131313131313",
+                    "14141414141414", "151515151515", "16161616161616", "17171771717171", "1818181818818181"))));
+            main_container.addView(list);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
